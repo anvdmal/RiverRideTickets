@@ -5,30 +5,39 @@ import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table
+@Table (name = "customers")
 public class Customer extends BaseEntityId {
-    private String first_name;
-    private String last_name;
+    private String firstName;
+    private String lastName;
     private String email;
     private Set<Ticket> ticketSet;
 
+    public Customer(String firstName, String lastName, String email, Set<Ticket> ticketSet) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.ticketSet = ticketSet;
+    }
 
-    @Column (nullable = false)
+    protected Customer() {
+    }
+
+    @Column (nullable = false, name = "first_name")
     public String getFirst_name() {
-        return first_name;
+        return firstName;
     }
 
     public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+        this.firstName = first_name;
     }
 
-    @Column (nullable = false)
-    public String getLast_name() {
-        return last_name;
+    @Column (nullable = false, name = "last_name")
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     @Column (nullable = false)

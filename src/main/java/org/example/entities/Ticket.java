@@ -2,18 +2,31 @@ package org.example.entities;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.Set;
 
 @Entity
-@Table
+@Table (name = "tickets")
 public class Ticket extends BaseEntityId {
     private Customer customer;
     private Voyage voyage;
     private int price;
     private String status;
-    private LocalDate purchase_date;
+    private OffsetDateTime purchaseDate;
     private Set<TicketService> ticketServicesSet;
+
+    public Ticket(Customer customer, Voyage voyage, int price, String status,
+                  OffsetDateTime purchaseDate, Set<TicketService> ticketServicesSet) {
+        this.customer = customer;
+        this.voyage = voyage;
+        this.price = price;
+        this.status = status;
+        this.purchaseDate = purchaseDate;
+        this.ticketServicesSet = ticketServicesSet;
+    }
+
+    protected Ticket() {
+    }
 
     @ManyToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "id", nullable = false)
@@ -53,13 +66,13 @@ public class Ticket extends BaseEntityId {
         this.status = status;
     }
 
-    @Column(nullable = false)
-    public LocalDate getPurchase_date() {
-        return purchase_date;
+    @Column(nullable = false, name = "purchase_date")
+    public OffsetDateTime getPurchaseDate() {
+        return purchaseDate;
     }
 
-    public void setPurchase_date(LocalDate purchase_date) {
-        this.purchase_date = purchase_date;
+    public void setPurchaseDate(OffsetDateTime purchaseDate) {
+        this.purchaseDate = purchaseDate;
     }
 
     @OneToMany(mappedBy = "ticket", targetEntity = TicketService.class,

@@ -5,11 +5,19 @@ import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table
+@Table (name = "services")
 public class Services extends BaseEntityId {
     private String description;
     private int price;
     private Set<TicketService> ticketServiceSet;
+
+    public Services(String description, int price) {
+        this.description = description;
+        this.price = price;
+    }
+
+    protected Services() {
+    }
 
     @Column(nullable = false)
     public String getDescription() {

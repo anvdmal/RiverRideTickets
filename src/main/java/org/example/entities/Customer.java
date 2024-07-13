@@ -49,8 +49,7 @@ public class Customer extends BaseEntityId {
         this.email = email;
     }
 
-    @OneToMany(mappedBy = "customer", targetEntity = Ticket.class,
-            fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customer", targetEntity = Ticket.class)
     public Set<Ticket> getTicketSet() {
         return ticketSet;
     }

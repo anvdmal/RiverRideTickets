@@ -75,8 +75,7 @@ public class Ticket extends BaseEntityId {
         this.purchaseDate = purchaseDate;
     }
 
-    @OneToMany(mappedBy = "ticket", targetEntity = TicketService.class,
-            fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "ticket", targetEntity = TicketService.class)
     public Set<TicketService> getTicketServicesSet() {
         return ticketServicesSet;
     }

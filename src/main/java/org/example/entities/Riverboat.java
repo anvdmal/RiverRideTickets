@@ -41,20 +41,20 @@ public class Riverboat extends BaseEntityId {
     }
 
     @Column (nullable = false, name = "deck_type")
-    public String getDeck_type() {
+    public String getDeckType() {
         return deckType;
     }
 
-    public void setDeck_type(String deck_type) {
+    public void setDeckType(String deck_type) {
         this.deckType = deck_type;
     }
 
     @Column (nullable = false, name = "cafe_availability")
-    public Boolean getCafe_availability() {
+    public Boolean getCafeAvailability() {
         return cafeAvailability;
     }
 
-    public void setCafe_availability(Boolean cafe_availability) {
+    public void setCafeAvailability(Boolean cafe_availability) {
         this.cafeAvailability = cafe_availability;
     }
 

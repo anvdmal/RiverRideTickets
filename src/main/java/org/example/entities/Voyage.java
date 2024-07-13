@@ -42,11 +42,11 @@ public class Voyage extends BaseEntityId {
     }
 
     @Column(nullable = false, name = "departure_date")
-    public OffsetDateTime getDeparture_date() {
+    public OffsetDateTime getDepartureDate() {
         return departureDate;
     }
 
-    public void setDeparture_date(OffsetDateTime departure_date) {
+    public void setDepartureDate(OffsetDateTime departure_date) {
         this.departureDate = departure_date;
     }
 
@@ -60,34 +60,33 @@ public class Voyage extends BaseEntityId {
     }
 
     @Column(nullable = false, name = "start_point")
-    public String getStart_point() {
+    public String getStartPoint() {
         return startPoint;
     }
 
-    public void setStart_point(String start_point) {
+    public void setStartPoint(String start_point) {
         this.startPoint = start_point;
     }
 
     @Column(nullable = false, name = "end_point")
-    public String getEnd_point() {
+    public String getEndPoint() {
         return endPoint;
     }
 
-    public void setEnd_point(String end_point) {
+    public void setEndPoint(String end_point) {
         this.endPoint = end_point;
     }
 
     @Column(nullable = false, name = "free_seats")
-    public int getFree_seats() {
+    public int getFreeSeats() {
         return freeSeats;
     }
 
-    public void setFree_seats(int free_seats) {
+    public void setFreeSeats(int free_seats) {
         this.freeSeats = free_seats;
     }
 
-    @OneToMany(mappedBy = "voyage", targetEntity = Ticket.class,
-            fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "voyage", targetEntity = Ticket.class)
     public Set<Ticket> getTicketSet() {
         return ticketSet;
     }

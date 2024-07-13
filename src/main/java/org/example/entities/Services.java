@@ -37,8 +37,7 @@ public class Services extends BaseEntityId {
         this.price = price;
     }
 
-    @OneToMany(mappedBy = "service", targetEntity = TicketService.class,
-            fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "service", targetEntity = TicketService.class)
     public Set<TicketService> getTicketServiceSet() {
         return ticketServiceSet;
     }

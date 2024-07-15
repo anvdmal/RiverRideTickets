@@ -18,13 +18,13 @@ public class Voyage extends BaseEntityId {
     private Set<Ticket> ticketSet;
 
     public Voyage(Riverboat riverboat, OffsetDateTime departureDate, BigDecimal basePrice,
-                  String startPoint, String endPoint, int freeSeats, Set<Ticket> ticketSet) {
+                  String startPoint, String endPoint, Set<Ticket> ticketSet) {
         this.riverboat = riverboat;
         this.departureDate = departureDate;
         this.basePrice = basePrice;
         this.startPoint = startPoint;
         this.endPoint = endPoint;
-        this.freeSeats = freeSeats;
+        this.freeSeats = riverboat.getCapacity();
         this.ticketSet = ticketSet;
     }
 

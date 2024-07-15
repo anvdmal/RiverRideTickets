@@ -3,7 +3,6 @@ package org.example.entities;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
-import java.time.Duration;
 import java.time.OffsetDateTime;
 import java.util.Set;
 

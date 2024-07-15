@@ -2,27 +2,23 @@ package org.example.entities;
 
 import jakarta.persistence.*;
 
-import java.time.OffsetDateTime;
-import java.util.Set;
+import java.math.BigDecimal;
 
 @Entity
-@Table (name = "tickets")
+@Table(name = "tickets")
 public class Ticket extends BaseEntityId {
     private Customer customer;
     private Voyage voyage;
-    private int price;
-    private String status;
-    private OffsetDateTime purchaseDate;
-    private Set<TicketService> ticketServicesSet;
+    private TicketCategory ticketCategory;
+    private BigDecimal finalPrice;
+    private TicketStatus status;
 
-    public Ticket(Customer customer, Voyage voyage, int price, String status,
-                  OffsetDateTime purchaseDate, Set<TicketService> ticketServicesSet) {
+    public Ticket(Customer customer, Voyage voyage, TicketCategory ticketCategory) {
         this.customer = customer;
         this.voyage = voyage;
-        this.price = price;
-        this.status = status;
-        this.purchaseDate = purchaseDate;
-        this.ticketServicesSet = ticketServicesSet;
+        this.ticketCategory = ticketCategory;
+        this.finalPrice = voyage.getBasePrice();
+        this.status = TicketStatus.ACTIVE;
     }
 
     protected Ticket() {
@@ -48,39 +44,32 @@ public class Ticket extends BaseEntityId {
         this.voyage = voyage;
     }
 
-    @Column(nullable = false)
-    public int getPrice() {
-        return price;
+    @ManyToOne
+    @JoinColumn(name = "ticket_type", referencedColumnName = "id", nullable = false)
+    public TicketCategory getTicketType() {
+        return ticketCategory;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setTicketType(TicketCategory ticketCategory) {
+        this.ticketCategory = ticketCategory;
+    }
+
+    @Column(name = "final_price", nullable = false)
+    public BigDecimal getFinalPrice() {
+        return finalPrice;
+    }
+
+    public void setFinalPrice(BigDecimal finalPrice) {
+        this.finalPrice = finalPrice;
     }
 
     @Column(nullable = false)
-    public String getStatus() {
+    @Enumerated(EnumType.STRING)
+    public TicketStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(TicketStatus status) {
         this.status = status;
-    }
-
-    @Column(nullable = false, name = "purchase_date")
-    public OffsetDateTime getPurchaseDate() {
-        return purchaseDate;
-    }
-
-    public void setPurchaseDate(OffsetDateTime purchaseDate) {
-        this.purchaseDate = purchaseDate;
-    }
-
-    @OneToMany(mappedBy = "ticket", targetEntity = TicketService.class)
-    public Set<TicketService> getTicketServicesSet() {
-        return ticketServicesSet;
-    }
-
-    public void setTicketServicesSet(Set<TicketService> ticketServicesSet) {
-        this.ticketServicesSet = ticketServicesSet;
     }
 }

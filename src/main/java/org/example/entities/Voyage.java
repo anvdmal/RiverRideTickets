@@ -2,6 +2,7 @@ package org.example.entities;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.OffsetDateTime;
 import java.util.Set;
@@ -11,17 +12,17 @@ import java.util.Set;
 public class Voyage extends BaseEntityId {
     private Riverboat riverboat;
     private OffsetDateTime departureDate;
-    private Duration duration;
+    private BigDecimal basePrice;
     private String startPoint;
     private String endPoint;
     private int freeSeats;
     private Set<Ticket> ticketSet;
 
-    public Voyage(Riverboat riverboat, OffsetDateTime departureDate, Duration duration,
+    public Voyage(Riverboat riverboat, OffsetDateTime departureDate, BigDecimal basePrice,
                   String startPoint, String endPoint, int freeSeats, Set<Ticket> ticketSet) {
         this.riverboat = riverboat;
         this.departureDate = departureDate;
-        this.duration = duration;
+        this.basePrice = basePrice;
         this.startPoint = startPoint;
         this.endPoint = endPoint;
         this.freeSeats = freeSeats;
@@ -50,13 +51,13 @@ public class Voyage extends BaseEntityId {
         this.departureDate = departure_date;
     }
 
-    @Column(nullable = false)
-    public Duration getDuration() {
-        return duration;
+    @Column(name= "base_price", nullable = false, scale = 2)
+    public BigDecimal getBasePrice() {
+        return basePrice;
     }
 
-    public void setDuration(Duration duration) {
-        this.duration = duration;
+    public void setBasePrice(BigDecimal basePrice) {
+        this.basePrice = basePrice;
     }
 
     @Column(nullable = false, name = "start_point")

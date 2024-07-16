@@ -1,7 +1,7 @@
 package org.example.services;
 
-import org.example.entities.Ticket;
+import org.example.dto.PurchaseTicketDTO;
 
 public interface TicketService {
-    Ticket purchaseTicket(Integer voyageId, String firstName, String lastName, String email, String ticketCategory);
+    PurchaseTicketDTO purchaseTicket(PurchaseTicketDTO purchaseTicketDTO);
 }

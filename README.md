@@ -23,7 +23,7 @@
 Сценарий 1. POST-запрос на покупку билета: *http://localhost:8080/ticket/purchase?voyageId=29&firstName=Мария&lastName=Кузнецова&email=kuznetsova@gmail.com&ticketType=ВЗРОСЛЫЙ*
 ![image](https://github.com/user-attachments/assets/9205db17-a750-4110-8233-dd5c63be2db4)
 
-Сценарий 2. POST-запрос на возврат билета: *http://localhost:8080/ticket/refund/8*
+Сценарий 2. POST-запрос на возврат билета: *http://localhost:8080/ticket/refund/10*
 ![image](https://github.com/user-attachments/assets/23dfe930-3449-4259-aa3f-bd0639d9d1ce)
 
 Сценарий 3. GET-запрос на поиск рейсов по введенным критериям: *http://localhost:8080/voyages/search?needSeats=3&startPoint=Северный речной вокзал&cafeAvailability=true*

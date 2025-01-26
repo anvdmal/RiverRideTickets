@@ -20,11 +20,11 @@
 3.	Пользователь получает список доступных рейсов.
 
 ### Демонстрация работы.
-Сценарий 1. POST-запрос на покупку билета.
-![image](https://github.com/user-attachments/assets/5e447fc4-ec0f-42f8-a54e-6a4f85ff858e)
+Сценарий 1. POST-запрос на покупку билета: *http://localhost:8080/ticket/purchase?voyageId=29&firstName=Мария&lastName=Кузнецова&email=kuznetsova@gmail.com&ticketType=ВЗРОСЛЫЙ*
+![image](https://github.com/user-attachments/assets/0163189c-05f6-4906-ace2-7988d18275c5)
 
-Сценарий 2. POST-запрос на возврат билета.
-![image](https://github.com/user-attachments/assets/7caede64-f84b-4af9-a747-c6b72d78bfd6)
+Сценарий 2. POST-запрос на возврат билета: *http://localhost:8080/ticket/refund/8*
+![image](https://github.com/user-attachments/assets/784a57f0-136f-420a-a8c0-e2996373b8bb)
 
-Сценарий 3. GET-запрос на поиск рейсов по введенным критериям
-![image](https://github.com/user-attachments/assets/cf0c1dd5-18fa-46f6-8959-29655583405a)
+Сценарий 3. GET-запрос на поиск рейсов по введенным критериям: *http://localhost:8080/voyages/search?needSeats=3&startPoint=Северный речной вокзал&cafeAvailability=true*
+![image](https://github.com/user-attachments/assets/a3a1e72f-4ccc-4da0-b4c8-7dc0165a1093)
